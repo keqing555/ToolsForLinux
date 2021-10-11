@@ -6,16 +6,19 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Zookeeper_Test {
     private ZooKeeper zooKeeper;
+    //需添加-Deditable.java.test.console=true
+    Scanner sc = new Scanner(System.in);
 
     /**
      * 创建Zookeeper客户端连接
      */
     @Before
     public void before() throws IOException {
-        zooKeeper = new ZooKeeper("192.168.212.129", 60000, new Watcher() {
+        zooKeeper = new ZooKeeper("192.168.212.129", 40000, new Watcher() {
             //执行成功回调方法和监听回调方法
             @Override
             public void process(WatchedEvent watchedEvent) {
@@ -53,8 +56,10 @@ public class Zookeeper_Test {
     @Test
     public void createNode() {
         try {
-            zooKeeper.create("/tiwate", "提瓦特".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
-            System.out.println("创建节点：tiwate");
+            System.out.println("请输入要创建的节点名称：");
+            String node = sc.next();
+            zooKeeper.create("/" + node, "提瓦特".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+            System.out.println("创建节点：" + node);
         } catch (KeeperException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -68,8 +73,10 @@ public class Zookeeper_Test {
     @Test
     public void getData() {
         try {
-            byte[] data = zooKeeper.getData("/tiwate", true, null);
-            System.out.println("tiwate节点数据：");
+            System.out.println("请输入要获取的节点名称：");
+            String node = sc.next();
+            byte[] data = zooKeeper.getData("/" + node, true, null);
+            System.out.print(node + "的节点数据：");
             System.out.println(new String(data));
             Thread.sleep(1000000);
             System.out.println("监听结束！");
@@ -86,8 +93,10 @@ public class Zookeeper_Test {
     @Test
     public void setData() {
         try {
-            zooKeeper.setData("/tiwate", "提瓦特大陆".getBytes(), -1);
-            System.out.println("节点提瓦特，已修改");
+            System.out.println("请输入要修改的节点名称：");
+            String node = sc.next();
+            zooKeeper.setData("/" + node, "提瓦特大陆".getBytes(), -1);
+            System.out.println(node + "节点已修改");
         } catch (KeeperException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -119,7 +128,10 @@ public class Zookeeper_Test {
     @Test
     public void deleteNode() {
         try {
-            zooKeeper.delete("/tiwate", -1);
+            System.out.println("请输入要删除的节点名称：");
+            String node = sc.next();
+            zooKeeper.delete("/" + node, -1);
+            System.out.println("节点" + node + "已删除");
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (KeeperException e) {
@@ -132,8 +144,10 @@ public class Zookeeper_Test {
      */
     @Test
     public void isExist() throws InterruptedException, KeeperException {
-        Stat stat = zooKeeper.exists("/tiwate", true);
-        System.out.println(stat);
+        System.out.println("请输入要查询的节点名称：");
+        String node = sc.next();
+        Stat stat = zooKeeper.exists("/" + node, true);
+        System.out.println("Stat:" + stat);
         Thread.sleep(1000000);
     }
 }
