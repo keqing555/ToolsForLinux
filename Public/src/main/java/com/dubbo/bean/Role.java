@@ -1,19 +1,20 @@
 package com.dubbo.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Role implements Serializable {
     private int rid;
-    private String name;
-    private String area;
+    private String rname;
+    private List<Weapon> weaponList;
 
     public Role() {
     }
 
-    public Role(int rid, String name, String area) {
+    public Role(int rid, String rname, List<Weapon> weaponList) {
         this.rid = rid;
-        this.name = name;
-        this.area = area;
+        this.rname = rname;
+        this.weaponList = weaponList;
     }
 
     public int getRid() {
@@ -24,28 +25,28 @@ public class Role implements Serializable {
         this.rid = rid;
     }
 
-    public String getName() {
-        return name;
+    public String getRname() {
+        return rname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRname(String rname) {
+        this.rname = rname;
     }
 
-    public String getArea() {
-        return area;
+    public List<Weapon> getWeaponList() {
+        return weaponList;
     }
 
-    public void setArea(String area) {
-        this.area = area;
+    public void setWeaponList(List<Weapon> weaponList) {
+        this.weaponList = weaponList;
     }
 
     @Override
     public String toString() {
-        return "Role{" +
+        return "\n Role{" +
                 "rid=" + rid +
-                ", name='" + name + '\'' +
-                ", area='" + area + '\'' +
-                '}';
+                ", rname='" + rname + '\'' +
+                ", \n weaponList=" + weaponList +
+                '}' + "\n";
     }
 }

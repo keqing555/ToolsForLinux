@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+https://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context 
+https://www.springframework.org/schema/context/spring-context.xsd
+http://code.alibabatech.com/schema/dubbo
+http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!--扫描要暴漏的服务注解-->
+    <dubbo:annotation package="com.dubbo.service"></dubbo:annotation>
+
+    <!--定义服务提供方名称-->
+    <dubbo:application name="weapon_Service"></dubbo:application>
+
+    <!--注册配置中心-->
+    <dubbo:registry address="zookeeper://192.168.128.128:2181"></dubbo:registry>
+
+    <!--配置暴漏服务的端口号和IP-->
+    <dubbo:protocol name="dubbo" port="2888"></dubbo:protocol>
+
+    <!--创建暴漏的服务实例-->
+    <bean id="weaponService" class="com.dubbo.service.WeaponServiceImpl"></bean>
+
+    <!--配置暴漏服务-->
+    <dubbo:service interface="com.dubbo.service.WeaponService" ref="weaponService"></dubbo:service>
+
+
+</beans>

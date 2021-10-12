@@ -6,8 +6,9 @@
 
     <groupId>com.dubbo</groupId>
     <artifactId>Dubbo</artifactId>
-    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
     <modules>
         <module>Server</module>
         <module>Client</module>
@@ -67,7 +68,7 @@
                     <!--指定项目启动后的访问路径-->
                     <path>/</path>
                     <!--指定访问端口号-->
-                    <port>8888</port>
+                    <port>8087</port>
                 </configuration>
             </plugin>
         </plugins>

@@ -10,10 +10,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>Server</artifactId>
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <!--导入Public模块的包-->
+        <dependency>
+            <groupId>com.dubbo</groupId>
+            <artifactId>Public</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
