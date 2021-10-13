@@ -13,18 +13,21 @@ http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <dubbo:annotation package="com.dubbo.service"></dubbo:annotation>
 
     <!--定义服务提供方名称-->
-    <dubbo:application name="weapon_Service"></dubbo:application>
+    <dubbo:application name="weapon_provider"></dubbo:application>
+
+    <!--设置重连次数和全局超时时间（consumer端设置）-->
+    <!--    <dubbo:provider retries="2" timeout="20000"></dubbo:provider>-->
 
     <!--注册配置中心-->
-    <dubbo:registry address="zookeeper://192.168.128.128:2181"></dubbo:registry>
+    <dubbo:registry address="zookeeper://192.168.128.129:2181"></dubbo:registry>
 
-    <!--配置暴漏服务的端口号和IP-->
+    <!--配置暴漏服务的端口号和IP,由provider指定，consumer被动接受-->
     <dubbo:protocol name="dubbo" port="2888"></dubbo:protocol>
 
-    <!--创建暴漏的服务实例-->
+    <!--创建暴露的服务实例-->
     <bean id="weaponService" class="com.dubbo.service.WeaponServiceImpl"></bean>
 
-    <!--配置暴漏服务-->
+    <!--配置暴露服务-->
     <dubbo:service interface="com.dubbo.service.WeaponService" ref="weaponService"></dubbo:service>
 
 
