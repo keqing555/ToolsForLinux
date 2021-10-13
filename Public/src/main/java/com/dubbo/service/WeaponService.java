@@ -5,5 +5,5 @@ import com.dubbo.bean.Weapon;
 import java.util.List;
 
 public interface WeaponService {
-    List<Weapon> getWeaponByRid(int rid);
+    public List<Weapon> getWeaponByRid(int rid);
 }

@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class RoleServiceImpl implements RoleService {
     @Reference(retries = 2, timeout = 60000, loadbalance = "roundrobin")
-    // @Autowired//从dubbo注册中心获取
+     //@Autowired   //从dubbo注册中心获取
     private WeaponService weaponService;
 
     @Override

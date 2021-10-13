@@ -18,8 +18,9 @@ http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
     <dubbo:application name="roleService_client"></dubbo:application>
 
     <!--指定注册中心-->
-    <dubbo:registry address="zookeeper://192.168.128.129:2181"></dubbo:registry>
+    <dubbo:registry address="zookeeper://192.168.128.128:2181"></dubbo:registry>
 
     <!--指定要获取的服务-->
-<!--    <dubbo:reference id="weaponService" interface="com.dubbo.service.WeaponService"></dubbo:reference>-->
+    <dubbo:reference id="weaponService" interface="com.dubbo.service.WeaponService"></dubbo:reference>
+
 </beans>
