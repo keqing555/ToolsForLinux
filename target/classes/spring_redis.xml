@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+https://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context 
+https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--创建Redis连接池实例-->
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <!--通过有参构造初始化-->
+        <constructor-arg name="poolConfig" ref="poolConfig"></constructor-arg>
+        <constructor-arg name="host" value="192.168.128.128"></constructor-arg>
+        <constructor-arg name="port" value="6379"></constructor-arg>
+        <constructor-arg name="timeout" value="60000"></constructor-arg>
+        <constructor-arg name="password" value="root"></constructor-arg>
+    </bean>
+
+    <!--为连接池创建配置实例-->
+    <bean id="poolConfig" class="org.apache.commons.pool2.impl.GenericObjectPoolConfig">
+        <property name="maxTotal" value="10"></property>
+        <property name="maxIdle" value="10"></property>
+    </bean>
+</beans>
