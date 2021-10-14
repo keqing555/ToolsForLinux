@@ -6,6 +6,7 @@
 https://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context 
 https://www.springframework.org/schema/context/spring-context.xsd">
+
     <!--创建Redis连接池实例-->
     <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
         <!--通过有参构造初始化-->
@@ -21,4 +22,5 @@ https://www.springframework.org/schema/context/spring-context.xsd">
         <property name="maxTotal" value="10"></property>
         <property name="maxIdle" value="10"></property>
     </bean>
+
 </beans>
