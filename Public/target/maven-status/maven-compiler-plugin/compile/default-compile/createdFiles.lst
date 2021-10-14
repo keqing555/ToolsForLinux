@@ -1,0 +1,4 @@
+com\dubbo\bean\Role.class
+com\dubbo\service\WeaponService.class
+com\dubbo\service\RoleService.class
+com\dubbo\bean\Weapon.class

@@ -19,10 +19,10 @@ http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <!--    <dubbo:provider retries="2" timeout="20000"></dubbo:provider>-->
 
     <!--注册配置中心-->
-    <dubbo:registry address="zookeeper://192.168.128.129:2181"></dubbo:registry>
+    <dubbo:registry address="zookeeper://192.168.128.128:2181"></dubbo:registry>
 
     <!--配置暴漏服务的端口号和IP,由provider指定，consumer被动接受-->
-    <dubbo:protocol name="dubbo" port="2888"></dubbo:protocol>
+    <dubbo:protocol name="dubbo" port="20880"></dubbo:protocol>
 
     <!--创建暴露的服务实例-->
     <bean id="weaponService" class="com.dubbo.service.WeaponServiceImpl"></bean>
