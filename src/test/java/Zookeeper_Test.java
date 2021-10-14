@@ -18,7 +18,7 @@ public class Zookeeper_Test {
      */
     @Before
     public void before() throws IOException {
-        zooKeeper = new ZooKeeper("192.168.212.129", 40000, new Watcher() {
+        zooKeeper = new ZooKeeper("192.168.128.129", 40000, new Watcher() {
             //执行成功回调方法和监听回调方法
             @Override
             public void process(WatchedEvent watchedEvent) {
