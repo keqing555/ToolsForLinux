@@ -10,7 +10,6 @@ import java.util.List;
 @Service
 public class WeaponServiceImpl implements WeaponService {
     //实现接口需要先导入接口的包
-
     @Override
     public List<Weapon> getWeaponByRid(int rid) {
         List<Weapon> list = new ArrayList<>();
